@@ -35,6 +35,8 @@ public class FoodOverviewActivity extends ActionBarActivity {
     @InjectView(R.id.commentsLabel)
     TextView commentsLabel;
 
+    private long foodId;
+
     public static void startWith(Activity currentActivity, long foodId) {
 
         Intent intent = new Intent(currentActivity, FoodOverviewActivity.class);
@@ -58,6 +60,11 @@ public class FoodOverviewActivity extends ActionBarActivity {
 
     }
 
+    @OnClick(R.id.detailsPanel)
+    public void onClickDetailsPanel() {
+        FoodStatsActivity.startWith(this, foodId);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +72,7 @@ public class FoodOverviewActivity extends ActionBarActivity {
 
         ButterKnife.inject(this);
 
-        long foodId = getIntent().getLongExtra(KEY_FOODID, -1);
+        foodId = getIntent().getLongExtra(KEY_FOODID, -1);
         if (foodId < 0) {
             Toast.makeText(this, "Could not load that item", Toast.LENGTH_SHORT).show();
             finish();

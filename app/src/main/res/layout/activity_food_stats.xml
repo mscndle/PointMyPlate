@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.weightwatchers.pointmyplate.ui.FoodStatsActivity"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/food_control_panel" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:background="#222"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:textColor="#fff"
+                    android:text="Point This Plate" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#e2e2e2"
+                android:text="Comments"
+                android:textColor="#999"
+                android:gravity="center"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#fff">
+
+        <LinearLayout
+            android:id="@+id/commentList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#cfcfcf"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:padding="5dp"
+            android:textColor="#222"
+            android:hint="Message"/>
+
+
+        </LinearLayout>
+</LinearLayout>

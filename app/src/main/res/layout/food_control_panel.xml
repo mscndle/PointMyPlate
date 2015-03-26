@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/yumButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yum" />
+
+    <Button
+        android:id="@+id/yuckButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yuck" />
+
+    <Button
+        android:id="@+id/detailsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/yumyuckLabel"
+            android:gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="205 Yums | 5 Yucks"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/commentsLabel"
+            android:layout_width="match_parent"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:text="5 Comments"
+            android:textColor="#468BD8" />
+
+    </LinearLayout>
+
+</LinearLayout>

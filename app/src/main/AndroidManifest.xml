@@ -22,6 +22,14 @@
             android:name=".ui.FoodOverviewActivity"
             android:label="@string/title_activity_food_overview" >
         </activity>
+        <activity
+            android:name=".ui.FoodStatsActivity"
+            android:label="@string/title_activity_food_stats" >
+        </activity>
+        <activity
+            android:name=".ui.MyPostsActivity"
+            android:label="@string/title_activity_my_posts" >
+        </activity>
     </application>
 
 </manifest>
