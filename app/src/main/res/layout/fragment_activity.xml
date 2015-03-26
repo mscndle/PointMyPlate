@@ -11,17 +11,26 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/myplates_background">
+        android:background="@drawable/plates_bg">
+
+        <ImageView
+            android:id="@+id/icon1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/plates"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/icon1"
             android:textColor="#fff"
             android:textStyle="bold"
             android:layout_marginBottom="10dp"
             android:layout_centerVertical="true"
             android:text="My Plates"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:textSize="24sp" />
 
         <TextView
@@ -45,7 +54,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/myreviews_background">
+        android:background="@drawable/review_bg">
+
+        <ImageView
+            android:id="@+id/icon2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/review"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,6 +71,7 @@
             android:textStyle="bold"
             android:layout_marginBottom="10dp"
             android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/icon2"
             android:text="My Reviews"
             android:layout_marginLeft="30dp"
             android:textSize="24sp" />
@@ -79,9 +97,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/notifications_background">
+        android:background="@drawable/notification_bg">
+
+        <ImageView
+            android:id="@+id/icon3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/notification"/>
 
         <TextView
+            android:layout_toRightOf="@id/icon3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#fff"
@@ -89,7 +116,7 @@
             android:layout_marginBottom="10dp"
             android:layout_centerVertical="true"
             android:text="Notifications"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:textSize="24sp" />
 
         <TextView
@@ -102,7 +129,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:text="3"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="20dp"
             android:textSize="24sp" />
 
 

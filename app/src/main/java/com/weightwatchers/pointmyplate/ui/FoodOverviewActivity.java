@@ -57,12 +57,12 @@ public class FoodOverviewActivity extends ActionBarActivity {
 
     @OnClick(R.id.detailsButton)
     public void onClickDetailsButton() {
-
+        FoodStatsActivity.startWith(this, foodId);
     }
 
     @OnClick(R.id.detailsPanel)
     public void onClickDetailsPanel() {
-        FoodStatsActivity.startWith(this, foodId);
+
     }
 
     @Override
