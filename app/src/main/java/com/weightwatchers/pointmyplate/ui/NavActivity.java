@@ -1,40 +1,131 @@
 package com.weightwatchers.pointmyplate.ui;
 
-import android.support.v7.app.ActionBarActivity;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.weightwatchers.pointmyplate.R;
 
-public class NavActivity extends BaseActivity {
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+import it.neokree.materialtabs.MaterialTab;
+import it.neokree.materialtabs.MaterialTabHost;
+import it.neokree.materialtabs.MaterialTabListener;
+
+public class NavActivity extends BaseActivity implements MaterialTabListener {
+
+    @InjectView(R.id.pager)
+    ViewPager pager;
+
+    @InjectView(R.id.tabHost)
+    MaterialTabHost tabHost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav);
+
+        ButterKnife.inject(this);
+
+        NavPagerAdapter adapter = new NavPagerAdapter();
+        pager.setAdapter(adapter);
+        pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                // when user do a swipe the selected tab change
+                tabHost.setSelectedNavigationItem(position);
+            }
+        });
+        adapter.initTabs();
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_nav, menu);
-        return true;
+    public void onTabSelected(MaterialTab tab) {
+        // when the tab is clicked the pager swipe content to the tab position
+        pager.setCurrentItem(tab.getPosition());
+
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onTabUnselected(MaterialTab materialTab) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    }
+
+    @Override
+    public void onTabReselected(MaterialTab materialTab) {
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (pager.getCurrentItem() == 0) {
+            // If the user is currently looking at the first step, allow the system to handle the
+            // Back button. This calls finish() on this activity and pops the back stack.
+            super.onBackPressed();
+        } else {
+            // Otherwise, select the previous step.
+            pager.setCurrentItem(pager.getCurrentItem() - 1);
+        }
+    }
+
+    private class NavPagerAdapter extends FragmentPagerAdapter {
+
+        public NavPagerAdapter() {
+            super(getSupportFragmentManager());
         }
 
-        return super.onOptionsItemSelected(item);
+        @Override
+        public Fragment getItem(int position) {
+            switch(position) {
+                case 0:
+                default:
+                    return HomeFragment.newInstance();
+                case 1:
+                    return SearchFragment.newInstance();
+                case 2:
+                    return PhotoFragment.newInstance();
+                case 3:
+                    return ActivityFragment.newInstance();
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return 4;
+        }
+
+        private Drawable getIcon(int position) {
+            switch (position) {
+                case 0:
+                default:
+                    return getResources().getDrawable(R.drawable.home);
+                case 1:
+                    return getResources().getDrawable(R.drawable.search);
+                case 2:
+                    return getResources().getDrawable(R.drawable.camera);
+                case 3:
+                    return getResources().getDrawable(R.drawable.man);
+            }
+        }
+
+        private void initTabs() {
+            for (int i = 0; i < getCount(); i++) {
+                tabHost.addTab(
+                        tabHost.newTab()
+                                .setIcon(getIcon(i))
+                                .setTabListener(NavActivity.this)
+                );
+            }
+
+        }
     }
+
 }

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.weightwatchers.pointmyplate.ui.NavActivity;
+
 
 /**
  * This activity will bootstrap the app then die
@@ -17,7 +19,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        startActivity(new Intent(this, ))
+        startActivity(new Intent(this, NavActivity.class));
     }
 
 }
