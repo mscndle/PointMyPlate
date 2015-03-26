@@ -27,8 +27,12 @@
             android:label="@string/title_activity_food_stats" >
         </activity>
         <activity
-            android:name=".ui.MyPostsActivity"
+            android:name=".ui.MyPlatesActivity"
             android:label="@string/title_activity_my_posts" >
+        </activity>
+        <activity
+            android:name=".ui.NotificationsActivity"
+            android:label="@string/title_activity_notifications" >
         </activity>
     </application>
 

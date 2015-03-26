@@ -1,67 +1,112 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.weightwatchers.pointmyplate.ui.ActivityFragment"
-    android:orientation="vertical"
-    android:padding="15dp">
+    android:orientation="vertical">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#fff"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"
-        android:text="My posts"/>
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/myplatesPanel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff" android:padding="5dp"
-        android:layout_marginBottom="20dp">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/fish"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/myplates_background">
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:layout_centerVertical="true"
+            android:text="My Plates"
+            android:layout_marginLeft="30dp"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#fff"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"
-        android:text="Posts I've reviewed"/>
-    <LinearLayout
+        <TextView
+            android:id="@+id/myplatesCountLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="27"
+            android:layout_marginRight="30dp"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/myreviewsPanel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff" android:padding="5dp"
-        android:layout_marginBottom="20dp">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/pancake"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/myreviews_background">
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:layout_centerVertical="true"
+            android:text="My Reviews"
+            android:layout_marginLeft="30dp"
+            android:textSize="24sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#fff"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"
-        android:text="Notifications"/>
-    <LinearLayout
+        <TextView
+            android:id="@+id/myreviewsCountLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="15"
+            android:layout_marginRight="30dp"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/notificationsPanel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff" android:padding="5dp"
-        android:layout_marginBottom="20dp">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/fish"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/notifications_background">
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:layout_centerVertical="true"
+            android:text="Notifications"
+            android:layout_marginLeft="30dp"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/notificationsCountLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="3"
+            android:layout_marginRight="30dp"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
 
 
 </LinearLayout>

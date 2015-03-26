@@ -7,7 +7,7 @@ import android.view.MenuItem;
 
 import com.weightwatchers.pointmyplate.R;
 
-public class MyPostsActivity extends ActionBarActivity {
+public class MyPlatesActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
