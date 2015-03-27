@@ -21,6 +21,22 @@
             android:scaleType="centerCrop"
             />
 
+        <TextView
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/pointsCoin"
+            android:paddingTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pointscoin"
+            android:gravity="center"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:text="12"/>
+
+
         <LinearLayout
             android:id="@+id/detailsPanel"
             android:layout_width="match_parent"

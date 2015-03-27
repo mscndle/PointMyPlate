@@ -7,7 +7,7 @@ import android.view.MenuItem;
 
 import com.weightwatchers.pointmyplate.R;
 
-public class NotificationsActivity extends ActionBarActivity {
+public class NotificationsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

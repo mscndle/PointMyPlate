@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class MyPlatesActivity extends ActionBarActivity {
+public class MyPlatesActivity extends BaseActivity {
 
     int[] imageIds = {
             R.drawable.bagels,

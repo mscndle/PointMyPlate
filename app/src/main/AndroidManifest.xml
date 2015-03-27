@@ -12,7 +12,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:name=".PMPApplication">
         <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,23 +27,29 @@
         </activity>
         <activity
             android:name=".ui.FoodOverviewActivity"
-            android:label="@string/title_activity_food_overview" >
+            android:label="@string/title_activity_food_overview"
+            android:parentActivityName=".ui.NavActivity">
+
         </activity>
         <activity
             android:name=".ui.FoodStatsActivity"
-            android:label="@string/title_activity_food_stats" >
+            android:label="@string/title_activity_food_stats"
+            android:parentActivityName=".ui.NavActivity">
         </activity>
         <activity
             android:name=".ui.MyPlatesActivity"
-            android:label="@string/title_activity_my_posts" >
+            android:label="@string/title_activity_my_posts"
+            android:parentActivityName=".ui.NavActivity">
         </activity>
         <activity
             android:name=".ui.NotificationsActivity"
-            android:label="@string/title_activity_notifications" >
+            android:label="@string/title_activity_notifications"
+            android:parentActivityName=".ui.NavActivity">
         </activity>
         <activity
             android:name=".ui.UploadPhotoActivity"
-            android:label="@string/title_activity_upload_photo" >
+            android:label="@string/title_activity_upload_photo"
+            android:parentActivityName=".ui.NavActivity">
         </activity>
     </application>
 

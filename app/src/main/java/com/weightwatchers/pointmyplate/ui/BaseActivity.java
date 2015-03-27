@@ -1,7 +1,9 @@
 package com.weightwatchers.pointmyplate.ui;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
 import android.view.inputmethod.EditorInfo;
@@ -15,6 +17,14 @@ import com.weightwatchers.pointmyplate.R;
 public class BaseActivity extends ActionBarActivity {
 
     private Handler handler = new Handler();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.titlebar);
+    }
 
     protected void hideFocus() {
         handler.post(new Runnable() {
