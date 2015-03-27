@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.weightwatchers.pointmyplate.R;
 
-public class FoodStatsActivity extends ActionBarActivity {
+public class FoodStatsActivity extends BaseActivity {
 
     private static final String KEY_FOODID = "foodid";
 
@@ -27,6 +27,13 @@ public class FoodStatsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_food_stats);
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        hideFocus();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

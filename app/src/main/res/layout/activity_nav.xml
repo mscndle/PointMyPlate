@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         app:iconColor="#FFFFFF"
-        app:primaryColor="#222222"
+        app:primaryColor="#000"
         app:accentColor="#F4A900"
         app:hasIcons="true"/>
 

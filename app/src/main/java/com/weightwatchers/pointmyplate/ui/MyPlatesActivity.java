@@ -2,17 +2,43 @@ package com.weightwatchers.pointmyplate.ui;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.weightwatchers.pointmyplate.R;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
 public class MyPlatesActivity extends ActionBarActivity {
+
+    int[] imageIds = {
+            R.drawable.bagels,
+            R.drawable.pancake,
+            R.drawable.fish,
+            R.drawable.chicken
+    };
+
+    @InjectView(R.id.imageList)
+    RecyclerView imageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_posts);
+        setContentView(R.layout.activity_my_plates);
+
+        ButterKnife.inject(this);
+
+        imageList.setAdapter(new MyPlatesAdapter());
+        imageList.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
     }
 
 
@@ -37,4 +63,45 @@ public class MyPlatesActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private class MyPlatesAdapter extends RecyclerView.Adapter<ImageRowHolder> {
+
+        @Override
+        public ImageRowHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+            View row = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.myplates_image_row, null);
+            return new ImageRowHolder(row, i);
+        }
+
+        @Override
+        public void onBindViewHolder(ImageRowHolder imageRowHolder, int i) {
+
+            imageRowHolder.image.setImageDrawable(getResources().getDrawable(imageIds[i]));
+        }
+
+        @Override
+        public int getItemCount() {
+            return imageIds.length;
+        }
+    }
+
+    public  class ImageRowHolder extends RecyclerView.ViewHolder {
+
+        private long foodId;
+
+        @InjectView(R.id.image)
+        ImageView image;
+
+        public ImageRowHolder(View view, int foodId) {
+            super(view);
+            this.foodId = foodId;
+
+            ButterKnife.inject(this, view);
+        }
+
+        @OnClick(R.id.image)
+        public void onClickImage() {
+            FoodOverviewActivity.startWith(MyPlatesActivity.this, foodId);
+        }
+    }
+
 }

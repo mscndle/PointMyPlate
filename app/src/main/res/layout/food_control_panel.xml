@@ -2,30 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:padding="10dp"
+    >
 
-    <Button
-        android:id="@+id/yumButton"
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Yum" />
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/yuckButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Yuck" />
+        <RadioButton
+            android:id="@+id/yumButton"
+            android:background="@drawable/yum_button"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="10dp"
+            android:button="@null"
+            android:layout_height="wrap_content" />
 
-    <Button
+        <RadioButton
+            android:id="@+id/yuckButton"
+            android:background="@drawable/yuck_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"/>
+
+    </RadioGroup>
+
+    <ImageView
         android:id="@+id/detailsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Details" />
+        android:background="@drawable/graph" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/yumyuckLabel"
@@ -33,7 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="205 Yums | 5 Yucks"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:id="@+id/commentsLabel"
@@ -41,7 +57,7 @@
             android:gravity="right"
             android:layout_height="wrap_content"
             android:text="5 Comments"
-            android:textColor="#468BD8" />
+            android:textColor="#fff" />
 
     </LinearLayout>
 

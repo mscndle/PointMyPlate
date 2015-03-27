@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,12 @@ import butterknife.OnClick;
 public class FoodOverviewActivity extends ActionBarActivity {
 
     private static final String KEY_FOODID = "foodid";
+
+    @InjectView(R.id.showMorePanel)
+    View showMorePanel;
+
+    @InjectView(R.id.detailsPanel)
+    View detailsPanel;
 
     @InjectView(R.id.image)
     ImageView imageView;
@@ -62,7 +69,8 @@ public class FoodOverviewActivity extends ActionBarActivity {
 
     @OnClick(R.id.detailsPanel)
     public void onClickDetailsPanel() {
-
+        showMorePanel.setVisibility(View.VISIBLE);
+        detailsPanel.setVisibility(View.GONE);
     }
 
     @Override
@@ -87,8 +95,15 @@ public class FoodOverviewActivity extends ActionBarActivity {
         };
 
         imageView.setImageDrawable(getResources().getDrawable(imageIds[(int)foodId]));
+
+        showMorePanel.setVisibility(View.GONE);
     }
 
+    @OnClick(R.id.showMorePanel)
+    public void onClickShowMore() {
+        showMorePanel.setVisibility(View.GONE);
+        detailsPanel.setVisibility(View.VISIBLE);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
