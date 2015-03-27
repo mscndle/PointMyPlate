@@ -96,17 +96,17 @@ public class HomeFragment extends Fragment {
         @Override
         public ImageRowHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
             View row = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.image_row, null);
-            return new ImageRowHolder(row, plateList.get(i));
+            return new ImageRowHolder(row);
         }
 
         @Override
         public void onBindViewHolder(ImageRowHolder imageRowHolder, int i) {
 
-            Plate plate = plateList.get(i);
-            imageRowHolder.image.setImageDrawable(getResources().getDrawable(plate.getResourceImage()));
-            imageRowHolder.nameLabel.setText(plate.getName());
-            imageRowHolder.yuckButton.setChecked(PMPApplication.get().getModelAPI().getVoteFor(plate.getId(), 0) == Vote.YUCK);
-            imageRowHolder.yumButton.setChecked(PMPApplication.get().getModelAPI().getVoteFor(plate.getId(), 0) == Vote.YUM);
+            imageRowHolder.plate = plateList.get(i);
+            imageRowHolder.plate.applyImageTo(getActivity(), imageRowHolder.image);
+            imageRowHolder.nameLabel.setText(imageRowHolder.plate.getName());
+            imageRowHolder.yuckButton.setChecked(PMPApplication.get().getModelAPI().getVoteFor(imageRowHolder.plate.getId(), 0) == Vote.YUCK);
+            imageRowHolder.yumButton.setChecked(PMPApplication.get().getModelAPI().getVoteFor(imageRowHolder.plate.getId(), 0) == Vote.YUM);
         }
 
         @Override
@@ -131,9 +131,8 @@ public class HomeFragment extends Fragment {
         @InjectView(R.id.yuckButton)
         RadioButton yuckButton;
 
-        public ImageRowHolder(View view, Plate plate) {
+        public ImageRowHolder(View view) {
             super(view);
-            this.plate = plate;
 
             ButterKnife.inject(this, view);
         }

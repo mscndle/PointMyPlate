@@ -63,6 +63,7 @@
         android:text="Point This Plate"
         android:background="@drawable/white_outline_box"
         android:layout_marginBottom="20dp"
+        android:visibility="gone"
         />
 
 </RelativeLayout>

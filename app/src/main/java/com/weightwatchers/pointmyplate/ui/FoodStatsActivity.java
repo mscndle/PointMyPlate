@@ -2,13 +2,23 @@ package com.weightwatchers.pointmyplate.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -49,6 +59,9 @@ public class FoodStatsActivity extends BaseActivity {
     @InjectView(R.id.commentList)
     ListView commentList;
 
+    @InjectView(R.id.commentField)
+    EditText commentField;
+
     private Plate plate;
     private Vote myVote;
 
@@ -87,6 +100,34 @@ public class FoodStatsActivity extends BaseActivity {
 
         yuckButton.setChecked(PMPApplication.get().getModelAPI().getVoteFor(plate.getId(), 0) == Vote.YUCK);
         yumButton.setChecked(PMPApplication.get().getModelAPI().getVoteFor(plate.getId(), 0) == Vote.YUM);
+
+        commentField.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == EditorInfo.IME_ACTION_SEARCH ||
+                        keyCode == EditorInfo.IME_ACTION_DONE ||
+                        event.getAction() == KeyEvent.ACTION_DOWN &&
+                                event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+
+                    String commentStr = commentField.getText().toString().trim();
+                    if (commentStr.length() == 0) {
+                        return true;
+                    }
+
+                    Comment comment = new Comment(plate.getId(), commentStr);
+
+                    PMPApplication.get().getModelAPI().addComment(plate.getId(), comment);
+                    ((CommentAdapter)commentList.getAdapter()).notifyDataSetChanged();
+
+                    commentField.setText("");
+
+                    updateUI();
+
+                    return true;
+                }
+                return false;
+            }
+        });
 
         commentList.setAdapter(new CommentAdapter(PMPApplication.get().getModelAPI().getCommentsFor(plate.getId())));
 
@@ -158,6 +199,55 @@ public class FoodStatsActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class PointsPagerAdapter extends FragmentPagerAdapter {
+
+        public PointsPagerAdapter() {
+            super(getSupportFragmentManager());
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return PointsFragment.newInstance(position);
+        }
+
+        @Override
+        public int getCount() {
+            return 24;
+        }
+    }
+
+    public static class PointsFragment extends Fragment {
+
+        private int position;
+
+        public static PointsFragment newInstance(int position) {
+            PointsFragment frag = new PointsFragment();
+            Bundle args = new Bundle();
+            args.putInt("points", position);
+            frag.setArguments(args);
+            return frag;
+        }
+
+        public PointsFragment() {
+        }
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+            position = getArguments().getInt("points");
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+            View panel = getLayoutInflater(null).inflate(R.layout.point_cell, null);
+            ((TextView)panel.findViewById(R.id.pointLabel)).setText(String.valueOf(position));
+
+            return panel;
+        }
     }
 
     private class CommentAdapter extends ArrayAdapter<Comment> {

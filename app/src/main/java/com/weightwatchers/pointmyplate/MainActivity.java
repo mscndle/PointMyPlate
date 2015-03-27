@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.weightwatchers.pointmyplate.ui.NavActivity;
 
@@ -19,7 +20,16 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        startActivity(new Intent(this, NavActivity.class));
+        setContentView(R.layout.activity_main);
+
+        findViewById(R.id.splash).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, NavActivity.class));
+                finish();
+            }
+        });
+
     }
 
 }

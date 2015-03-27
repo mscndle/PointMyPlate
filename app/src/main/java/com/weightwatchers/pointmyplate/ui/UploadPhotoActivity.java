@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.weightwatchers.pointmyplate.PMPApplication;
 import com.weightwatchers.pointmyplate.R;
+import com.weightwatchers.pointmyplate.model.Plate;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,6 +31,15 @@ public class UploadPhotoActivity extends BaseActivity {
 
     @InjectView(R.id.image)
     ImageView imageView;
+
+    @InjectView(R.id.nameLabel)
+    TextView nameLabel;
+
+    @InjectView(R.id.locationLabel)
+    TextView locationLabel;
+
+    @InjectView(R.id.notesLabel)
+    TextView notesLabel;
 
     public static void startWith(Activity currentActivity, File imageFile) {
 
@@ -61,6 +73,14 @@ public class UploadPhotoActivity extends BaseActivity {
 
     @OnClick(R.id.saveButton)
     public void onClickSaveButton() {
+
+        String name = nameLabel.getText().toString();
+        String location = locationLabel.getText().toString();
+        String notes = notesLabel.getText().toString();
+
+        PMPApplication.get().getModelAPI().addPlate(new Plate(name, location, notes,  imageFile));
+
+
         Intent intent = new Intent(this, NavActivity.class);
 
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

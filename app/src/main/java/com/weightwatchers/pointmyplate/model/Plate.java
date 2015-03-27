@@ -1,8 +1,16 @@
 package com.weightwatchers.pointmyplate.model;
 
+import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+
+import com.weightwatchers.pointmyplate.R;
 import com.weightwatchers.pointmyplate.util.MockUtil;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,6 +47,14 @@ public class Plate {
         this.notes = notes;
         this.location = location;
         this.resourceImage = resourceImage;
+    }
+
+    public Plate(String name, String notes, String location, File localImage) {
+        this.id = nextPlateId++;
+        this.name = name;
+        this.notes = notes;
+        this.location = location;
+        this.localImage = localImage;
     }
 
     public int getId() {
@@ -107,5 +123,23 @@ public class Plate {
 
     public void addPointVote(int points) {
         pointList.add(points);
+    }
+
+    public void applyImageTo(Context context, ImageView imageView) {
+        if (resourceImage > 0) {
+            imageView.setImageDrawable(context.getResources().getDrawable(resourceImage));
+            return;
+        }
+        if (localImage != null && localImage.exists()) {
+            try {
+                imageView.setImageBitmap(BitmapFactory.decodeStream(new FileInputStream(localImage)));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+
+        // Default for now
+        imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.steak));
     }
 }

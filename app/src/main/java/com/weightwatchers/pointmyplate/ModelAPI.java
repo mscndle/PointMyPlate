@@ -26,9 +26,10 @@ public class ModelAPI {
 
         // Install some mock data
         plateList.addAll(Arrays.asList(new Plate[]{
+                        new Plate("Steak Skillet Fry", "My mom made this for us tonight", "Mom's house", R.drawable.steak),
                         new Plate("Bagel breakfast", "I had this at the local bakery", "Bagel Bakery of Bakertown", R.drawable.bagels),
                         new Plate("Fish something", "Looks grilled, so that's healthier, right?", "Bob's Fish Grill", R.drawable.fish),
-                        new Plate("Chicken chicken", "something something chicken", "Chicken place", R.drawable.chicken),
+                        new Plate("Salad for Kings", "Not sure what those red things are", "Dave and Baxter's", R.drawable.salad),
                         new Plate("Super yummy dessert", "I'm not even sure what this is called, but it was yummy", "Aunt Peggy's", R.drawable.pancake)
 
                 })
@@ -36,10 +37,14 @@ public class ModelAPI {
 
         List<Comment> commentList = new ArrayList<Comment>();
         commentList.addAll(Arrays.asList(new Comment[]{
-            new Comment(1, "Did the bakery have a nutrition page available?"),
-                new Comment(0, "I forgot to ask")
+            new Comment(1, "How much of that did you eat?"),
+                new Comment(0, "All of it")
         }));
         commentMap.put(1, commentList);
+    }
+
+    public void addPlate(Plate plate) {
+        plateList.add(0, plate);
     }
 
     public Vote getVoteFor(int plateId, long userId) {

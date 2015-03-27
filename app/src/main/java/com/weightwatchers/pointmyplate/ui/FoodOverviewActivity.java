@@ -141,7 +141,7 @@ public class FoodOverviewActivity extends BaseActivity {
             return;
         }
 
-        imageView.setImageDrawable(getResources().getDrawable(plate.getResourceImage()));
+        plate.applyImageTo(this, imageView);
         showMorePanel.setVisibility(View.GONE);
         myVote = PMPApplication.get().getModelAPI().getVoteFor(plate.getId(), 0);
         if (myVote != null) {
